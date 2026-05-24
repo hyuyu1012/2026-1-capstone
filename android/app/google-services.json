@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "912607651198",
+    "project_id": "captsone-test",
+    "storage_bucket": "captsone-test.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912607651198:android:a6e6f408ed5523980eff2f",
+        "android_client_info": {
+          "package_name": "com.example.capstone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7Ylo-G8wIxajp5GfhGPqd7dxXZUAxAOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
