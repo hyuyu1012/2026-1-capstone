@@ -1,0 +1,31 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 사용자는 자기 자신의 문서만 읽고 쓸 수 있다.
+    match /users/{uid} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == uid;
+    }
+
+    // 케어 그룹: 멤버만 읽기, 소유자만 생성/수정/삭제.
+    match /careGroups/{groupId} {
+      allow read: if request.auth != null
+                  && request.auth.uid in resource.data.memberUids;
+
+      allow create: if request.auth != null
+                    && request.auth.uid == request.resource.data.ownerUid;
+
+      allow update, delete: if request.auth != null
+                            && request.auth.uid == resource.data.ownerUid;
+
+      // 일일 기록: 그룹 멤버만 읽고 쓸 수 있다.
+      match /dailyRecords/{recordId} {
+        allow read, write: if request.auth != null
+            && request.auth.uid in
+               get(/databases/$(database)/documents/careGroups/$(groupId)).data.memberUids;
+      }
+    }
+  }
+}

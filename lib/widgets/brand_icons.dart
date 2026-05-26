@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 
+
+// 방패 체크 아이콘, 내부 상태를 가지지 않는다.
 class ShieldCheckIcon extends StatelessWidget {
+  // 생성
   const ShieldCheckIcon({super.key, this.size = 32, this.color = Colors.white});
 
+  // 아이콘의 크기와 색깔 지
   final double size;
   final Color color;
 
+  //
   @override
   Widget build(BuildContext context) {
     return CustomPaint(

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../auth/auth_service.dart';
 import '../theme/app_colors.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/brand_icons.dart';
+import 'email_login_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key, required this.authService});
 
+  final AuthService authService;
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -69,7 +72,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         foregroundColor: Colors.white,
                         elevated: true,
                         onPressed: () {
-                          // TODO: EmailLoginScreen으로 라우팅
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => EmailLoginScreen(
+                                authService: widget.authService,
+                              ),
+                            ),
+                          );
                         },
                       ),
                     ],
